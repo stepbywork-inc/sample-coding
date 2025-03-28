@@ -1,0 +1,173 @@
+@use "foundation/reset";
+@use "layout/l_base";
+
+body {
+  min-height: 300vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  background: url(../images/bg.png);
+  background-size: cover;
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+  }
+}
+.step {
+  max-width: 916px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: auto 6px 58px 1fr;
+  gap: 65px 0;
+  align-items: center;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: auto 4px 40px 1fr;
+  }
+  .year {
+    font-size: 70px;
+    font-weight: bold;
+    color: #f6d758;
+    -webkit-text-stroke: 1px #000;
+    paint-order: stroke;
+    margin-right: 60px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    @media screen and (max-width: 768px) {
+      font-size: 40px;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      white-space: normal;
+      margin-right: 6px;
+    }
+  }
+  .human {
+    grid-row: auto / span 3;
+    background: #000;
+    align-self: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    transform: translateX(29px + 3px);
+    @media screen and (max-width: 768px) {
+      transform: translateX(20px + 2px);
+    }
+    img {
+      max-width: none;
+      width: 129px;
+      flex-shrink: 0;
+      margin-top: -140px;
+      position: sticky;
+      top: 30vh;
+      @media screen and (max-width: 768px) {
+        width: 100px;
+        margin-top: -109px;
+      }
+    }
+  }
+  .coin {
+    position: relative;
+    z-index: 1;
+    @keyframes coin-disappear {
+      0% {
+        transform: scale(1) translateY(0) rotateY(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.5) translateY(-20px) rotateY(720deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(0) translateY(-50px) rotateY(1440deg);
+        opacity: 0;
+      }
+    }
+
+    &.is-got {
+      animation: coin-disappear 0.8s ease-out forwards;
+    }
+    &.is-got {
+    }
+  }
+  .textarea {
+    // background-color: #fff;
+    padding: 50px;
+    // border: 2px solid #707070;
+    margin-left: 69px;
+    background: 
+    //左上
+      linear-gradient(to right, #707070) top 20px left 0px / 12px 2px no-repeat,
+      linear-gradient(to top, #707070) top 10px left 10px / 2px 12px no-repeat,
+      linear-gradient(to right, #707070) top 10px left 10px / 12px 2px no-repeat,
+      linear-gradient(to top, #707070) top 0px left 20px / 2px 12px no-repeat,
+      //右上
+      linear-gradient(to left, #707070) top 20px right 0px / 12px 2px no-repeat,
+      linear-gradient(to top, #707070) top 10px right 10px / 2px 12px no-repeat,
+      linear-gradient(to left, #707070) top 10px right 10px / 12px 2px no-repeat,
+      linear-gradient(to top, #707070) top 0px right 20px / 2px 12px no-repeat,
+      //左下
+      linear-gradient(to right, #707070) bottom 20px left 0px / 12px 2px no-repeat,
+      linear-gradient(to bottom, #707070) bottom 10px left 10px / 2px 12px no-repeat,
+      linear-gradient(to right, #707070) bottom 10px left 10px / 12px 2px no-repeat,
+      linear-gradient(to bottom, #707070) bottom 0px left 20px / 2px 12px no-repeat,
+      //右下
+      linear-gradient(to left, #707070) bottom 20px right 0px / 12px 2px no-repeat,
+      linear-gradient(to bottom, #707070) bottom 10px right 10px / 2px 12px no-repeat,
+      linear-gradient(to left, #707070) bottom 10px right 10px / 12px 2px no-repeat,
+      linear-gradient(to bottom, #707070) bottom 0px right 20px / 2px 12px no-repeat,
+      //右辺
+      linear-gradient(to left, #707070) top 20px right 0px / 2px calc(100% - 40px) no-repeat,
+      //下辺
+      linear-gradient(to top, #707070) bottom 0px left 20px / calc(100% - 40px) 2px no-repeat,
+      //左辺
+      linear-gradient(to right, #707070) top 20px left 0px / 2px calc(100% - 40px) no-repeat,
+      //上辺
+      linear-gradient(to bottom, #707070) top 0px left 20px / calc(100% - 40px) 2px no-repeat white;
+    clip-path: polygon(
+      //左上
+      0px 20px,
+      10px 20px,
+      10px 10px,
+      20px 10px,
+      20px 0px,
+      //右上
+      calc(100% - 20px) 0px,
+      calc(100% - 20px) 10px,
+      calc(100% - 10px) 10px,
+      calc(100% - 10px) 20px,
+      calc(100% - 0px) 20px,
+      //右下
+      calc(100% - 0px) calc(100% - 20px),
+      calc(100% - 10px) calc(100% - 20px),
+      calc(100% - 10px) calc(100% - 10px),
+      calc(100% - 20px) calc(100% - 10px),
+      calc(100% - 20px) calc(100% - 0px),
+      //左下
+      20px calc(100% - 0px),
+      20px calc(100% - 10px),
+      10px calc(100% - 10px),
+      10px calc(100% - 20px),
+      0px calc(100% - 20px)
+    );
+    @media screen and (max-width: 768px) {
+      margin-left: 10px;
+      padding: 20px;
+    }
+    .title {
+      font-size: 20px;
+      line-height: 1.6;
+      @media screen and (max-width: 768px) {
+        font-size: 18px;
+      }
+    }
+    .text {
+      font-size: 16px;
+      line-height: calc(36 / 16);
+      margin-top: 20px;
+      @media screen and (max-width: 768px) {
+        font-size: 14px;
+        margin-top: 5px;
+        line-height: 1.8;
+      }
+    }
+  }
+}
